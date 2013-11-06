@@ -2,7 +2,7 @@ require "Number"
 
 describe Number do
 
-    it 'deveria retornar Um' do
+    it 'deveria rtornar Um' do
         author = Number.new()
         author.run(1).should eql('um')
     end
