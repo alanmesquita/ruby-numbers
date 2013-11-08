@@ -16,4 +16,9 @@ describe Number do
         author = Number.new()
         author.run(3).should eql('tres')
     end
+
+    it 'deveria retornar 20' do
+        author = Number.new()
+        author.run(20).should eql('vinte')
+    end
 end
