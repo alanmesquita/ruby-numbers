@@ -1,12 +1,29 @@
 class Number
 
     @@unit = ['zero', 'um', 'dois', 'tres', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove']
-    @@dozen = ['vinte', 'trinta', 'quarenta', 'cinquenta', 'sessenta', 'setenta', 'oitenta', 'noventa']
+    @@dozen = ['dez', 'vinte', 'trinta', 'quarenta', 'cinquenta', 'sessenta', 'setenta', 'oitenta', 'noventa']
+    @@exceptions = ['onze', 'doze', 'treze', 'quatorze', 'quinze', 'dezeseis', 'dezesete', 'dezoito', 'dezenove']
 
     def run (number)
-        if(number.to_s.size == 2)
-            return @@dozen[number.to_s.chars.first.to_i-2]
+        number = number.to_s
+        if(number.size == 2)
+            if(positionNumber(number) == 1 and positionNumber(number, 1) > 0)
+                return @@exceptions[number.to_i-11]
+            end
+
+            if (positionNumber(number, 1) > 0)
+                return @@dozen[positionNumber(number) - 1] + ' e ' + @@unit[positionNumber(number)]
+            end
+
+            return @@dozen[positionNumber(number) - 1]
         end
-        return @@unit[number]
+
+        return @@unit[positionNumber(number)]
+    end
+
+    private
+
+    def positionNumber (number, position = 0)
+        return number[position].to_i
     end
 end

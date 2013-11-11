@@ -21,4 +21,30 @@ describe Number do
         author = Number.new()
         author.run(20).should eql('vinte')
     end
+
+    it 'deveria retornar 30' do
+        author = Number.new()
+        author.run(30).should eql('trinta')
+    end
+
+    it 'deveria retornar 33' do
+        author = Number.new()
+        author.run(33).should eql('trinta e tres')
+    end
+
+    it 'deveria retornar 44' do
+        author = Number.new()
+        author.run(44).should eql('quarenta e quatro')
+    end
+
+    it 'deveria retornar 44' do
+        author = Number.new()
+        author.run(11).should eql('onze')
+    end
+
+    it 'deveria retornar 44' do
+        author = Number.new()
+        author.run(10).should eql('dez')
+    end
+
 end
