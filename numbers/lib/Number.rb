@@ -9,21 +9,25 @@ class Number
     def run (number)
         number = number.to_s
         if(number.size == 2)
-            if(positionNumber(number) == 1 and positionNumber(number, 1) > 0)
-                return @@exceptions[number.to_i - 11]
-            end
-
-            if (positionNumber(number, 1) > 0)
-                return @@dozen[positionNumber(number) - 1] + ' e ' + @@unit[positionNumber(number)]
-            end
-
-            return @@dozen[positionNumber(number) - 1]
+            return calcMoreThanUnit number
         end
 
         return @@unit[positionNumber(number)]
     end
 
     private
+
+    def calcMoreThanUnit (number)
+        if(positionNumber(number) == 1 and positionNumber(number, 1) > 0)
+            return @@exceptions[number.to_i - 11]
+        end
+
+        if (positionNumber(number, 1) > 0)
+            return @@dozen[positionNumber(number) - 1] + ' e ' + @@unit[positionNumber(number)]
+        end
+
+        return @@dozen[positionNumber(number) - 1]
+    end
 
     def positionNumber (number, position = 0)
         return number[position].to_i
